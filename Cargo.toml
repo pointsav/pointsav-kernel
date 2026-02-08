@@ -1,7 +1,13 @@
-[package]
-name = "package-system"
-version = "0.1.1"
-edition = "2024"
+[workspace]
+members = [
+    "crates/pointsav-core",
+    "crates/pointsav-sel4-sys",
+    "crates/pointsav-root-task",
+    "crates/pointsav-vmm",
+]
+resolver = "2"
 
-[dependencies]
-serde = { version = "1.0.228", features = ["derive"] }
+[profile.release]
+panic = "abort"    # 2030 Standard: No unwinding in high-assurance systems
+lto = true         # Link Time Optimization for the smallest binary
+opt-level = "s"    # Optimize for size (Lean)

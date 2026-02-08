@@ -1,0 +1,8 @@
+[package]
+name = "pointsav-root-task"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pointsav-core = { path = "../pointsav-core" }
+pointsav-sel4-sys = { path = "../pointsav-sel4-sys" }

@@ -2,15 +2,20 @@
 #![no_main]
 
 use core::panic::PanicInfo;
+use pointsav_core::CapabilityAccountant;
 
-// 2030 Standard: Minimalist Entry Point
 #[no_mangle]
+#[link_section = ".text._start"]
 pub extern "C" fn _start() -> ! {
-    // 1. Root-Task takes control of capabilities
-    // 2. Initialises Hardware
-    // 3. Spawns VMM
+    let _accountant = CapabilityAccountant::new();
     
-    loop {}
+    boot_sequence_complete();
+}
+
+fn boot_sequence_complete() -> ! {
+    loop {
+        core::hint::spin_loop();
+    }
 }
 
 #[panic_handler]

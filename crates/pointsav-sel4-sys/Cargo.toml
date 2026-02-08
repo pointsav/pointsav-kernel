@@ -1,0 +1,11 @@
+[package]
+name = "pointsav-sel4-sys"
+version = "0.1.0"
+edition = "2021"
+links = "sel4" # Tells Cargo this crate links to the seL4 library
+
+[dependencies]
+# No dependencies for the runtime; it's just raw bindings
+
+[build-dependencies]
+bindgen = "0.69" # Standard for generating Rust/C bridges
